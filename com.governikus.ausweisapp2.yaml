@@ -1,0 +1,37 @@
+app-id: com.governikus.ausweisapp2
+runtime: org.kde.Platform
+runtime-version: "5.13"
+sdk: org.kde.Sdk
+command: AusweisApp2
+finish-args:
+  - --share=network
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pcsc
+modules: 
+  - name: pcsc-lite
+    sources:
+      - type: archive
+        url: https://pcsclite.apdu.fr/files/pcsc-lite-1.8.25.tar.bz2
+        sha256: d76d79edc31cf76e782b9f697420d3defbcc91778c3c650658086a1b748e8792
+    config-opts:
+      - --with-systemdsystemunitdir=/app/lib/systemd/system
+
+  - name: AusweisApp2
+    sources:
+      - type: git
+        url: https://github.com/Governikus/AusweisApp2.git
+        tag: 1.20.0
+      - type: patch
+        path: AusweisApp2-1.20.0-qml-location.patch
+      - type: patch
+        path: AusweisApp2-1.20.0-no-mailto.patch
+    buildsystem: cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=release
+    builddir: true
+    post-install:
+      - sed -i 's,Icon=/app/share/AusweisApp2_CE/AusweisApp2/npa.svg,Icon=com.governikus.ausweisapp2,' /app/share/applications/com.governikus.ausweisapp2.desktop
+      - sed -i 's,Exec=/app/bin/AusweisApp2,Exec=AusweisApp2,' /app/share/applications/com.governikus.ausweisapp2.desktop
+      - mkdir -p /app/share/icons/hicolor/scalable/apps
+      - cp /app/share/AusweisApp2_CE/AusweisApp2/npa.svg /app/share/icons/hicolor/scalable/apps/com.governikus.ausweisapp2.svg
