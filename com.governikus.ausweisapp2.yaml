@@ -23,8 +23,6 @@ modules:
         url: https://github.com/Governikus/AusweisApp2.git
         tag: 1.20.0
       - type: patch
-        path: AusweisApp2-1.20.0-qml-location.patch
-      - type: patch
         path: AusweisApp2-1.20.0-no-mailto.patch
     buildsystem: cmake
     config-opts:
