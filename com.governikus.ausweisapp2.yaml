@@ -1,6 +1,6 @@
 app-id: com.governikus.ausweisapp2
 runtime: org.kde.Platform
-runtime-version: "5.13"
+runtime-version: "5.14"
 sdk: org.kde.Sdk
 command: AusweisApp2
 finish-args:
