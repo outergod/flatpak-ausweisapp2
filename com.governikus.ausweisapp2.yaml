@@ -10,6 +10,7 @@ finish-args:
   - --socket=pcsc
   - --own-name=org.kde.* # Workaround for org.kde.StatusNotifierWatcher support, see https://github.com/flathub/com.viber.Viber/issues/4
   - --talk-name=org.freedesktop.Notifications
+  - --env=QT_QUICK_BACKEND=software
 modules:
   - name: pcsc-lite
     sources:
