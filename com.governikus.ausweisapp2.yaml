@@ -18,6 +18,10 @@ modules:
         sha256: 3eb7be7d6ef618c0a444316cf5c1f2f9d7227aedba7a192f389fe3e7c0dfbbd9
     config-opts:
       - --with-systemdsystemunitdir=/app/lib/systemd/system
+    cleanup:
+      - /include
+      - /lib/*.la
+      - /lib/pkgconfig
 
   - name: AusweisApp2
     sources:
