@@ -1,7 +1,7 @@
 FLATPAK_BUILDER = flatpak-builder
 BUILDER_OPTIONS = --force-clean --ccache --require-changes
 TARGET_REPO = repo
-MANIFEST = com.governikus.ausweisapp2.yaml
+MANIFEST = de.bund.ausweisapp.ausweisapp2.yaml
 COMMAND = AusweisApp2
 
 help: ## Show help
